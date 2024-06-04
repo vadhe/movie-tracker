@@ -40,6 +40,16 @@ clean:
 	@echo "Cleaning..."
 	@rm -f main
 
+# Migration Command
+DB_CONFIG = "user=melkey dbname=blueprint password=password1234 sslmode=disable host=localhost port=5432"
+
+migrate-up:
+	@goose -dir=migrations postgres $(DB_CONFIG) up
+migrate-down:
+	@goose -dir=migrations postgres  $(DB_CONFIG) down
+migrate-status:
+	@goose -dir=migrations postgres  $(DB_CONFIG) status
+
 # Live Reload
 watch:
 	@if command -v air > /dev/null; then \

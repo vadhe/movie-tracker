@@ -33,6 +33,11 @@ Shutdown DB container
 make docker-down
 ```
 
+Run migration
+```bash
+make migrate-option
+```
+
 live reload the application
 ```bash
 make watch

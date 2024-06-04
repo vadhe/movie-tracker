@@ -5,6 +5,7 @@ all: build
 
 build:
 	@echo "Building..."
+	@./tailwindcss -i cmd/web/assets/css/input.css -o cmd/web/assets/css/output.css --minify
 	@templ generate
 	@go build -o main cmd/api/main.go
 
@@ -49,6 +50,7 @@ migrate-down:
 	@goose -dir=migrations postgres  $(DB_CONFIG) down
 migrate-status:
 	@goose -dir=migrations postgres  $(DB_CONFIG) status
+
 
 # Live Reload
 watch:

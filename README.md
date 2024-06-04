@@ -1,10 +1,20 @@
 # Project movie-tracker
 
-One Paragraph of project description goes here
+This project for learning fullstack Golang
 
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+## Tailwind standalone
+because this project using tailwind standalone CLI we need to run this command for tailwind setup
+
+```bash
+curl -sLO https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-macos-arm64
+chmod +x tailwindcss-macos-arm64
+mv tailwindcss-macos-arm64 tailwindcss
+```
+
 
 ## MakeFile
 
@@ -41,6 +51,11 @@ make migrate-option
 live reload the application
 ```bash
 make watch
+```
+
+watch for tailwind
+```bash
+make css-watch
 ```
 
 run the test suite

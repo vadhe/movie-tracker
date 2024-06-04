@@ -27,3 +27,10 @@ tmp/
 
 # Project build
 main
+
+# Css standalone exe
+tailwindcss
+
+# Css output
+cmd/web/assets/css/output.css
+*templ.go

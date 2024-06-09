@@ -5,22 +5,25 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/a-h/templ"
 	"movie-tracker/cmd/web"
+	"movie-tracker/internal/controller"
+	"movie-tracker/libs"
+
+	"github.com/a-h/templ"
 )
 
 func (s *Server) RegisterRoutes() http.Handler {
 
 	mux := http.NewServeMux()
-	mux.HandleFunc("/", s.HelloWorldHandler)
-
-	mux.HandleFunc("/health", s.healthHandler)
-
+	mux.Handle("/", libs.IsAuthenticated((templ.Handler(web.Home()))))
 	fileServer := http.FileServer(http.FS(web.Files))
 	mux.Handle("/assets/", fileServer)
 	mux.Handle("/web", templ.Handler(web.HelloForm()))
-	mux.HandleFunc("/hello", web.HelloWebHandler)
+	mux.Handle("/login-view", libs.IsAuthenticated(templ.Handler(web.Login())))
+	mux.HandleFunc("POST /login", controller.Auth)
 
+	mux.HandleFunc("/hello", web.HelloWebHandler)
+	mux.HandleFunc("/health", s.healthHandler)
 	return mux
 }
 

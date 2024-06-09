@@ -1,0 +1,12 @@
+package web
+
+templ Login() {
+	@Base() {
+		<form hx-post="/login" method="POST" hx-target="body" hx-swap="innerHTML transition:true">
+			<input id="name" name="username" type="text"/>
+			<input id="password" name="password" type="password"/>
+			<button type="submit">Submit</button>
+		</form>
+	}
+}
+
